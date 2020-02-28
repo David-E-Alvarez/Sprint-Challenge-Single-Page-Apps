@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import index from "../index";
 import CharacterList from "./CharacterList";
 import CharacterCard from "./CharacterCard";
