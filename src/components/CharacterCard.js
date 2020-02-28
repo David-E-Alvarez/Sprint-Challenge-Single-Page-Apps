@@ -1,5 +1,14 @@
 import React from "react";
-
-export default function CharacterCard() {
-  return <span>todo: character</span>;
+import {
+  Card, CardBody, CardTitle} from 'reactstrap';
+export default function CharacterCard(props) {
+  return(
+    <div>
+      <Card>
+        <CardBody>
+          <CardTitle>{props.name}</CardTitle>
+        </CardBody>
+      </Card>
+    </div>
+  ); 
 }
