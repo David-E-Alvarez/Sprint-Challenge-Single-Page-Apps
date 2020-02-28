@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard.js";
+import SearchForm from "./SearchForm";
 
 export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+  //TODO: Add useState to track data from useEffect
   const [characterData, setCharacterData] = useState([]);
 
   // useEffect(() => {
@@ -19,11 +20,12 @@ export default function CharacterList() {
   //       console.log("Data was not returned,", error);
   //     });
   // }, []);
-
+ 
   return (
     <section className="character-list">
+      <SearchForm/>
       {characterData.map(character => {
-        return <CharacterCard name={character.name} />;
+        return <CharacterCard name={character.name} />
       })}
     </section>
   );
