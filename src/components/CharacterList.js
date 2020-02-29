@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard.js";
 import SearchForm from "./SearchForm";
-
+import { Route} from "react-router-dom";
 export default function CharacterList() {
   //TODO: Add useState to track data from useEffect
   const [characterData, setCharacterData] = useState([]);

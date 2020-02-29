@@ -13,6 +13,7 @@ export default function Header() {
       <Route path="/" component={WelcomePage}/>
       <Route path="/characters" component={CharacterList}/>
       <Route path="/search" component={SearchForm}/>
+      
     </header>
   );
 }
