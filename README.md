@@ -26,7 +26,7 @@ In this challenge, you will create a Single Page Application complete with Clien
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 - [x]  Explain benefit(s) using `client-side routing`?
-    URL and content don't have to wait for server to respond. 
+    URL and content don't have to wait for server to respond by means of Javascript manipulating the URL changes.
 
 > Answer:
 
