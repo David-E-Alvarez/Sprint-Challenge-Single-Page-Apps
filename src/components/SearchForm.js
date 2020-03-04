@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 
-export default function SearchForm() {
-  const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-  const handleChange = event =>{
-    setQuery(event.target.value);
-    //console.log("event: ", event.target.value);
-  }
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-    axios
-      .get("https://cors-anywhere.herokuapp.com/https://rickandmortyapi.com/api/character/")
-      .then(response => {
-        console.log("response.data.results: ", response.data.results);
-        const characters = response.data.results.filter(character => 
-          character.name.toLowerCase().includes(query.toLowerCase()))
-        setData(characters);
-      })
-      .catch(error => {
-        console.log("Data was not returned,", error);
-      });
-  }, [query]);
+export default function SearchForm(props) {
+  console.log("props in SearchForm: ", props)
+  // const [data, setData] = useState([]);
+  // const [query, setQuery] = useState("");
+  // const handleChange = event =>{
+  //   setQuery(event.target.value);
+  //   //console.log("event: ", event.target.value);
+  // }
+  // useEffect(() => {
+  //   TODO: Add API Request here - must run in `useEffect`
+  //    Important: verify the 2nd `useEffect` parameter: the dependancies array!
+  //   axios
+  //     .get("https://cors-anywhere.herokuapp.com/https://rickandmortyapi.com/api/character/")
+  //     .then(response => {
+  //       console.log("response.data.results: ", response.data.results);
+  //       const characters = response.data.results.filter(character => 
+  //         character.name.toLowerCase().includes(query.toLowerCase()))
+  //       setData(characters);
+  //     })
+  //     .catch(error => {
+  //       console.log("Data was not returned,", error);
+  //     });
+  // }, [query]);
   const inputChange = event =>{
-    setQuery(event.target.value);
+    props.setQuery(event.target.value);
   }
   return (
     <section className="search-form">
@@ -32,16 +33,14 @@ export default function SearchForm() {
         type="text"
         placeholder="search character"
         onChange={inputChange}
-        value={query}
+        value={props.query}
       />
-      <div>
-        {data.map(data=>{
+      {props.data.map(data=>{
           return(
-          <h1>{data.name}</h1>
+            <h1>{data.name}</h1>
           )
         })}
-      </div>
-     
+      
      
 
     </section>

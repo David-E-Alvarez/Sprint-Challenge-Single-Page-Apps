@@ -6,6 +6,8 @@ import SearchForm from "./SearchForm";
 export default function CharacterList() {
   //TODO: Add useState to track data from useEffect
   const [characterData, setCharacterData] = useState([]);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -15,17 +17,29 @@ export default function CharacterList() {
       .then(response => {
         console.log("response.data: ", response.data);
         setCharacterData(response.data.results);
+        const characters = response.data.results.filter(character => 
+        character.name.toLowerCase().includes(query.toLowerCase()))
+        setData(characters);
       })
       .catch(error => {
         console.log("Data was not returned,", error);
       });
-  }, []);
- 
+  }, [query]);
+  const handleChange = event =>{
+    setQuery(event.target.value);
+    //console.log("event: ", event.target.value);
+  }
+  const inputChange = event =>{
+    setQuery(event.target.value);
+  }
   return (
     <section className="character-list">
       {characterData.map(character => {
         return <CharacterCard name={character.name} />
       })}
+      <SearchForm query={query} setQuery={setQuery} data={data}/>
+       
     </section>
+   
   );
 }
